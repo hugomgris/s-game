@@ -25,7 +25,7 @@ end
 -- Load function - called once when game starts
 function initialize()
     -- Load the cube image
-    local cubeImage = gfx.image.new("sprites/cube_01")
+    local cubeImage = gfx.image.new("sprites/cube_360/cube_01")
     
     if cubeImage == nil then
         print("ERROR: Could not load cube_01 sprite!")
