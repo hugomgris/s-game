@@ -1,4 +1,4 @@
-# Nibbler - Devlog - 1
+# Proyecto Sombra - Devlog - 1
 
 ## Contenido
 1. [Cuánto arde una idea](#11---cuánto-arde-una-idea)
