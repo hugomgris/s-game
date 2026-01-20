@@ -1,0 +1,7 @@
+name=Proyecto Sombra
+author=Hugo Munoz
+description=Shadow theater prototype for Playdate
+bundleID=com.hugomgris.sombra
+version=0.1.0
+buildNumber=1
+imagePath=sprites/

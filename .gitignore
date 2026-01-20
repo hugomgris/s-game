@@ -1,0 +1,23 @@
+# Compiled game
+*.pdx/
+game.pdx/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Blender temp files
+*.blend1
+*.blend2
+
+# Build artifacts
+*.zip
+*.tar.gz
