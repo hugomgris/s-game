@@ -50,10 +50,10 @@ PlaydateSimulator game.pdx
 
 ## Current Status
 
-✅ Basic sprite display working  
-⏳ Phase 1: Blender rotation sprites (16 frames)  
-⏳ Phase 2: Rotation system with crank input  
-⏳ Phase 3: Multiple cubes with selection
+-[x] Basic sprite display working  
+-[ ] Phase 1: Blender rotation sprites (16 frames)  
+-[ ] Phase 2: Rotation system with crank input  
+-[ ] Phase 3: Multiple cubes with selection
 
 See `docs/devlog-01.md` for detailed development plan.
 
