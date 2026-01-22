@@ -1,6 +1,3 @@
--- Proyecto Sombra - Main Entry Point
--- Single hand sprite rotation with crank control
-
 import "CoreLibs/graphics"
 import "CoreLibs/sprites"
 
@@ -8,23 +5,21 @@ import "CoreLibs/sprites"
 local gfx <const> = playdate.graphics
 
 -- Configuration
-local SPRITE_COUNT = 16  -- Number of rotation frames
-local CRANK_SENSITIVITY = 22.5  -- Degrees per sprite (360/16)
-local SPRITE_PATH = "sprites/hand/dithered/"  -- Path to hand sprites
+local SPRITE_COUNT = 16							-- Number of rotation frames
+local CRANK_SENSITIVITY = 22.5					-- Degrees per sprite (360/16)
+local SPRITE_PATH = "sprites/hand/dithered/"	-- Path to hand sprites
 
 -- Game state
-local handSprite = nil  -- The hand sprite object
-local spriteFrames = {}  -- Array of loaded images
-local currentFrame = 1  -- Current frame index (1-16)
-local crankAccumulator = 0  -- Accumulated crank rotation
+local handSprite = nil		-- The hand sprite object
+local spriteFrames = {}		-- Array of loaded images
+local currentFrame = 1		-- Current frame index (1-16)
+local crankAccumulator = 0 	-- Accumulated crank rotation
 
 -- Load all sprite frames
 function loadSpriteFrames()
-    print("Loading hand sprite frames...")
     local frames = {}
     
     for i = 1, SPRITE_COUNT do
-        -- Format: hand_01.png, hand_02.png, etc.
         local frameName = string.format("%shand_%02d", SPRITE_PATH, i)
         local frameImage = gfx.image.new(frameName)
         
@@ -34,7 +29,6 @@ function loadSpriteFrames()
         end
         
         frames[i] = frameImage
-        print("Loaded frame " .. i .. ": " .. frameName)
     end
     
     print("Successfully loaded all " .. SPRITE_COUNT .. " frames!")
@@ -44,7 +38,8 @@ end
 -- Update hand sprite frame based on crank input
 function updateHandRotation()
     -- Get crank change in degrees
-    local crankChange, acceleratedChange = playdate.getCrankChange()
+    local crankChange
+	local acceleratedChange = playdate.getCrankChange()
     
     if crankChange ~= 0 then
         -- Accumulate crank rotation
@@ -76,10 +71,8 @@ end
 
 -- Main update loop
 function playdate.update()
-    -- Clear screen
     gfx.clear()
     
-    -- Update hand rotation based on crank
     updateHandRotation()
     
     -- Update and draw all sprites
@@ -91,19 +84,14 @@ function playdate.update()
     
     -- Show crank indicator if undocked
     if not playdate.isCrankDocked() then
-        gfx.drawText("🎮", 380, 220)
+        gfx.drawText("GO!", 370, 220)
     end
 end
 
 -- Initialize the game (second call at bottom is the real one)
 function initialize()
-    print("=== Proyecto Sombra - Hand Rotation Prototype ===")
-    print("Initializing...")
-    
-    -- Enable dithering for better grayscale rendering
     gfx.setImageDrawMode(gfx.kDrawModeCopy)
-    
-    -- Load all sprite frames
+
     spriteFrames = loadSpriteFrames()
     
     if spriteFrames == nil then
@@ -113,16 +101,8 @@ function initialize()
     
     -- Create the hand sprite
     handSprite = gfx.sprite.new(spriteFrames[1])
-    handSprite:moveTo(200, 120)  -- Center of screen (400x240)
+    handSprite:moveTo(120, 120)
     handSprite:add()
-    
-    print("Hand sprite created at center (200, 120)")
-    print("Current frame: " .. currentFrame .. "/" .. SPRITE_COUNT)
-    print("")
-    print("Controls:")
-    print("  🎮 Crank: Rotate hand")
-    print("")
-    print("Ready!")
 end
 
 -- Start the game
